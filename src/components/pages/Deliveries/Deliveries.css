@@ -1,0 +1,322 @@
+.deliveries {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.deliveries__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-xl);
+}
+
+.deliveries__subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  margin-top: var(--spacing-xs);
+}
+
+/* Controls */
+.deliveries__controls {
+  margin-bottom: var(--spacing-lg);
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+}
+
+.search-box__icon {
+  position: absolute;
+  left: var(--spacing-md);
+  color: var(--text-tertiary);
+}
+
+.search-box__input {
+  width: 100%;
+  padding: 10px 12px 10px 40px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+}
+
+.search-box__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Status Tabs */
+.status-tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-xs);
+}
+
+.status-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.status-tab:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.status-tab--active {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.status-tab__label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.status-tab__count {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background-color: var(--color-gray-200);
+}
+
+.status-tab--active .status-tab__count {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Delivery Map */
+.delivery-map-card {
+  margin-bottom: var(--spacing-xl);
+  animation: slideDown var(--transition-base);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Deliveries Table */
+.deliveries-table {
+  width: 100%;
+}
+
+.deliveries-table__header {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1.5fr 1fr 1fr 0.8fr 1fr;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.deliveries-table__header .deliveries-table__cell {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.deliveries-table__row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1.5fr 1fr 1fr 0.8fr 1fr;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-sm);
+  align-items: center;
+  transition: all var(--transition-base);
+}
+
+.deliveries-table__row:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.deliveries-table__cell {
+  font-size: var(--font-size-sm);
+}
+
+.cell-content__primary {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.cell-content__secondary {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.route-info,
+.eta-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--text-secondary);
+}
+
+.route-info svg,
+.eta-info svg {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Progress */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background-color: var(--color-gray-200);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-info));
+  transition: width var(--transition-slow);
+}
+
+.progress-text {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 35px;
+}
+
+.table-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-secondary);
+}
+
+.empty-state__icon {
+  color: var(--text-tertiary);
+  margin-bottom: var(--spacing-md);
+}
+
+.empty-state h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .deliveries-table__header,
+  .deliveries-table__row {
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+  }
+
+  .deliveries-table__cell:nth-child(3),
+  .deliveries-table__cell:nth-child(7) {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .deliveries-table__header,
+  .deliveries-table__row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .deliveries-table__cell:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .deliveries__header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .status-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .status-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .deliveries-table__header {
+    display: none;
+  }
+
+  .deliveries-table__row {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+  }
+
+  .deliveries-table__cell {
+    display: block !important;
+  }
+
+  .deliveries-table__cell:before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .table-actions {
+    flex-wrap: wrap;
+  }
+
+  .table-actions button {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .delivery-map-card {
+    margin-left: calc(var(--spacing-md) * -1);
+    margin-right: calc(var(--spacing-md) * -1);
+  }
+}
