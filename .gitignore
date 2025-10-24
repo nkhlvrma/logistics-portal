@@ -17,6 +17,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.logistics-prd.md
+.logistics-research-doc.md
+.ui-enhancement-prd.md
 
 npm-debug.log*
 yarn-debug.log*
