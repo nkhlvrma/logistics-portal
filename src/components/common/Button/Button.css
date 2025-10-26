@@ -11,6 +11,11 @@
   outline: none;
 }
 
+.button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -20,16 +25,19 @@
 .button--sm {
   padding: 6px 12px;
   font-size: var(--font-size-sm);
+  min-height: 32px;
 }
 
 .button--md {
   padding: 10px 20px;
   font-size: var(--font-size-base);
+  min-height: 40px;
 }
 
 .button--lg {
   padding: 12px 24px;
   font-size: var(--font-size-lg);
+  min-height: 48px;
 }
 
 /* Variants */
@@ -42,6 +50,10 @@
   background-color: var(--color-primary-dark);
 }
 
+.button--primary:active:not(:disabled) {
+  background-color: #1e3a8a;
+}
+
 .button--secondary {
   background-color: var(--color-gray-200);
   color: var(--text-primary);
@@ -49,6 +61,10 @@
 
 .button--secondary:hover:not(:disabled) {
   background-color: var(--color-gray-300);
+}
+
+.button--secondary:active:not(:disabled) {
+  background-color: var(--color-gray-400);
 }
 
 .button--outline {
@@ -61,6 +77,16 @@
   background-color: var(--color-primary-light);
 }
 
+.button--outline:active:not(:disabled) {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-dark);
+}
+
+/* Dark mode outline variant fix */
+.dark-mode .button--outline:hover:not(:disabled) {
+  background-color: rgba(96, 165, 250, 0.1);
+}
+
 .button--ghost {
   background-color: transparent;
   color: var(--text-primary);
@@ -70,6 +96,10 @@
   background-color: var(--color-gray-100);
 }
 
+.button--ghost:active:not(:disabled) {
+  background-color: var(--color-gray-200);
+}
+
 .button--danger {
   background-color: var(--color-danger);
   color: white;
@@ -77,6 +107,10 @@
 
 .button--danger:hover:not(:disabled) {
   background-color: #dc2626;
+}
+
+.button--danger:active:not(:disabled) {
+  background-color: #b91c1c;
 }
 
 .button--full-width {

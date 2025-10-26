@@ -32,8 +32,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode");
+      document.body.classList.remove("light-mode-override");
     } else {
       document.body.classList.remove("dark-mode");
+      document.body.classList.add("light-mode-override");
     }
     localStorage.setItem("darkMode", darkMode ? "true" : "false");
   }, [darkMode]);

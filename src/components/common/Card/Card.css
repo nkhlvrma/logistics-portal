@@ -4,16 +4,31 @@
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
   overflow: hidden;
+  transition: all var(--transition-base);
 }
 
 .card--hoverable:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-  transition: all var(--transition-base);
 }
 
 .card--clickable {
   cursor: pointer;
+}
+
+.card--clickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Dark mode shadow enhancement */
+.dark-mode .card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .card--hoverable:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
 .card__header {

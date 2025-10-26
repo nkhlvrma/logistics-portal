@@ -3,31 +3,46 @@
   --color-primary: #2563eb;
   --color-primary-dark: #1e40af;
   --color-primary-light: #dbeafe;
-  /* Dark mode variables */
+
+  /* Dark mode variables - Enhanced for WCAG AA accessibility */
   --color-primary-darkmode: #60a5fa;
-  --color-primary-dark-darkmode: #1e293b;
+  --color-primary-dark-darkmode: #3b82f6;
   --color-primary-light-darkmode: #1e293b;
-  --color-success-darkmode: #34d399;
-  --color-warning-darkmode: #fbbf24;
+  --color-success-darkmode: #22c55e;
+  --color-warning-darkmode: #eab308;
   --color-danger-darkmode: #f87171;
   --color-info-darkmode: #60a5fa;
-  --color-gray-50-darkmode: #18181b;
-  --color-gray-100-darkmode: #27272a;
-  --color-gray-200-darkmode: #3f3f46;
-  --color-gray-300-darkmode: #52525b;
-  --color-gray-400-darkmode: #a1a1aa;
-  --color-gray-500-darkmode: #d4d4d8;
-  --color-gray-600-darkmode: #e5e7eb;
-  --color-gray-700-darkmode: #f3f4f6;
-  --color-gray-800-darkmode: #fafafa;
-  --color-gray-900-darkmode: #ffffff;
-  --bg-primary-darkmode: #18181b;
-  --bg-secondary-darkmode: #27272a;
-  --bg-tertiary-darkmode: #18181b;
+
+  /* Dark mode gray scale - Improved contrast */
+  --color-gray-50-darkmode: #0a0a0b;
+  --color-gray-100-darkmode: #18181b;
+  --color-gray-200-darkmode: #27272a;
+  --color-gray-300-darkmode: #3f3f46;
+  --color-gray-400-darkmode: #71717a;
+  --color-gray-500-darkmode: #a1a1aa;
+  --color-gray-600-darkmode: #d4d4d8;
+  --color-gray-700-darkmode: #e4e4e7;
+  --color-gray-800-darkmode: #f4f4f5;
+  --color-gray-900-darkmode: #fafafa;
+
+  /* Dark mode backgrounds - Better separation */
+  --bg-primary-darkmode: #0a0a0b;
+  --bg-secondary-darkmode: #18181b;
+  --bg-tertiary-darkmode: #27272a;
+
+  /* Dark mode text - WCAG AA compliant */
   --text-primary-darkmode: #fafafa;
-  --text-secondary-darkmode: #a1a1aa;
-  --text-tertiary-darkmode: #52525b;
+  --text-secondary-darkmode: #d4d4d8;
+  --text-tertiary-darkmode: #a1a1aa;
+
+  /* Dark mode borders */
   --border-color-darkmode: #3f3f46;
+
+  /* Dark mode status light backgrounds - Better contrast */
+  --color-success-light-darkmode: #14532d;
+  --color-warning-light-darkmode: #422006;
+  --color-danger-light-darkmode: #450a0a;
+  --color-info-light-darkmode: #1e3a8a;
 
   /* Status colors */
   --color-success: #10b981;
@@ -152,6 +167,44 @@ body {
   --text-secondary: var(--text-secondary-darkmode);
   --text-tertiary: var(--text-tertiary-darkmode);
   --border-color: var(--border-color-darkmode);
+  --color-success-light: var(--color-success-light-darkmode);
+  --color-warning-light: var(--color-warning-light-darkmode);
+  --color-danger-light: var(--color-danger-light-darkmode);
+  --color-info-light: var(--color-info-light-darkmode);
+}
+
+/* System preference support - only applies if dark-mode class is NOT already set */
+@media (prefers-color-scheme: dark) {
+  body:not(.dark-mode):not(.light-mode-override) {
+    --color-primary: var(--color-primary-darkmode);
+    --color-primary-dark: var(--color-primary-dark-darkmode);
+    --color-primary-light: var(--color-primary-light-darkmode);
+    --color-success: var(--color-success-darkmode);
+    --color-warning: var(--color-warning-darkmode);
+    --color-danger: var(--color-danger-darkmode);
+    --color-info: var(--color-info-darkmode);
+    --color-gray-50: var(--color-gray-50-darkmode);
+    --color-gray-100: var(--color-gray-100-darkmode);
+    --color-gray-200: var(--color-gray-200-darkmode);
+    --color-gray-300: var(--color-gray-300-darkmode);
+    --color-gray-400: var(--color-gray-400-darkmode);
+    --color-gray-500: var(--color-gray-500-darkmode);
+    --color-gray-600: var(--color-gray-600-darkmode);
+    --color-gray-700: var(--color-gray-700-darkmode);
+    --color-gray-800: var(--color-gray-800-darkmode);
+    --color-gray-900: var(--color-gray-900-darkmode);
+    --bg-primary: var(--bg-primary-darkmode);
+    --bg-secondary: var(--bg-secondary-darkmode);
+    --bg-tertiary: var(--bg-tertiary-darkmode);
+    --text-primary: var(--text-primary-darkmode);
+    --text-secondary: var(--text-secondary-darkmode);
+    --text-tertiary: var(--text-tertiary-darkmode);
+    --border-color: var(--border-color-darkmode);
+    --color-success-light: var(--color-success-light-darkmode);
+    --color-warning-light: var(--color-warning-light-darkmode);
+    --color-danger-light: var(--color-danger-light-darkmode);
+    --color-info-light: var(--color-info-light-darkmode);
+  }
 }
 
 h1,
