@@ -10,6 +10,8 @@
 .card--hoverable:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+  background-color: var(--bg-secondary);
+  border-color: var(--color-gray-300);
 }
 
 .card--clickable {
@@ -29,6 +31,8 @@
 .dark-mode .card--hoverable:hover {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
     0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  background-color: var(--bg-tertiary);
+  border-color: var(--color-gray-300);
 }
 
 .card__header {

@@ -100,6 +100,15 @@
   background-color: var(--color-gray-200);
 }
 
+/* Dark mode ghost variant fix: ensure visible hover */
+.dark-mode .button--ghost:hover:not(:disabled) {
+  background-color: var(--bg-tertiary);
+}
+
+.dark-mode .button--ghost:active:not(:disabled) {
+  background-color: var(--color-gray-300);
+}
+
 .button--danger {
   background-color: var(--color-danger);
   color: white;

@@ -134,6 +134,12 @@
   color: var(--text-primary);
 }
 
+/* Dark mode: increase hover contrast in sidebar */
+.dark-mode .nav-item:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
 .nav-item:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: -2px;
