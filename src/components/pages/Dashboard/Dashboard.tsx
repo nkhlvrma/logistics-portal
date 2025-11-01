@@ -105,7 +105,11 @@ export const Dashboard: React.FC = () => {
             }
           />
           <CardBody>
-            <div className="delivery-list">
+            <div
+              className="delivery-list"
+              aria-live="polite"
+              aria-atomic="false"
+            >
               {deliveries.map((delivery) => (
                 <div
                   key={delivery.id}

@@ -65,13 +65,14 @@ export const Deliveries: React.FC = () => {
       <Card className="deliveries__controls">
         <CardBody>
           <div className="search-box">
-            <Search size={18} className="search-box__icon" />
+            <Search size={18} className="search-box__icon" aria-hidden="true" />
             <input
               type="text"
               className="search-box__input"
               placeholder="Search by order number or vehicle..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search deliveries by order number or vehicle"
             />
           </div>
         </CardBody>

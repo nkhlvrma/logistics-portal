@@ -69,6 +69,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="layout">
+      {/* Skip Navigation Link */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       {/* Mobile Header */}
       <header className="mobile-header">
         <button
@@ -193,7 +198,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       </aside>
 
       {/* Main Content Area */}
-      <main className="main-content">{children}</main>
+      <main className="main-content" id="main-content">
+        {children}
+      </main>
     </div>
   );
 };

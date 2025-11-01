@@ -4,6 +4,7 @@ import "./index.css";
 import "./styles/globals.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Analytics } from "@vercel/analytics/react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

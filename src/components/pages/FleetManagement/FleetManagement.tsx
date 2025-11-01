@@ -95,13 +95,18 @@ export const FleetManagement: React.FC = () => {
         <CardBody>
           <div className="controls-row">
             <div className="search-box">
-              <Search size={18} className="search-box__icon" />
+              <Search
+                size={18}
+                className="search-box__icon"
+                aria-hidden="true"
+              />
               <input
                 type="text"
                 className="search-box__input"
                 placeholder="Search by vehicle number or driver name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Search fleet by vehicle number or driver name"
               />
             </div>
             <div className="view-toggle">

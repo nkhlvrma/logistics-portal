@@ -64,24 +64,32 @@ export const AddVehicleForm: React.FC<AddVehicleFormProps> = ({
   return (
     <form className="add-vehicle-form" onSubmit={handleSubmit}>
       <div className="form-title">New Vehicle</div>
-      {error && <div className="form-error">{error}</div>}
+      {error && (
+        <div className="form-error" role="alert" aria-live="assertive">
+          {error}
+        </div>
+      )}
       <div className="form-grid">
         <div className="form-field">
-          <label>Vehicle Number</label>
+          <label htmlFor="vehicle-number">Vehicle Number</label>
           <input
+            id="vehicle-number"
             className="form-input"
             type="text"
             placeholder="e.g. MH-12-AB-1234"
             value={vehicleNumber}
             onChange={(e) => setVehicleNumber(e.target.value)}
+            aria-required="true"
           />
         </div>
         <div className="form-field">
-          <label>Type</label>
+          <label htmlFor="vehicle-type">Type</label>
           <select
+            id="vehicle-type"
             className="form-input"
             value={type}
             onChange={(e) => setType(e.target.value)}
+            aria-required="true"
           >
             <option value="Truck">Truck</option>
             <option value="Van">Van</option>
@@ -89,51 +97,61 @@ export const AddVehicleForm: React.FC<AddVehicleFormProps> = ({
           </select>
         </div>
         <div className="form-field">
-          <label>Capacity (kg)</label>
+          <label htmlFor="vehicle-capacity">Capacity (kg)</label>
           <input
+            id="vehicle-capacity"
             className="form-input"
             type="number"
             placeholder="e.g. 5000"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
+            aria-required="true"
           />
         </div>
         <div className="form-field">
-          <label>Driver Name</label>
+          <label htmlFor="driver-name">Driver Name</label>
           <input
+            id="driver-name"
             className="form-input"
             type="text"
             placeholder="e.g. Rajesh Kumar"
             value={driverName}
             onChange={(e) => setDriverName(e.target.value)}
+            aria-required="true"
           />
         </div>
         <div className="form-field">
-          <label>Driver Phone</label>
+          <label htmlFor="driver-phone">Driver Phone</label>
           <input
+            id="driver-phone"
             className="form-input"
             type="text"
             placeholder="e.g. +91 98765 43210"
             value={driverPhone}
             onChange={(e) => setDriverPhone(e.target.value)}
+            aria-required="true"
           />
         </div>
         <div className="form-field form-field--full">
-          <label>Location Address</label>
+          <label htmlFor="location-address">Location Address</label>
           <input
+            id="location-address"
             className="form-input"
             type="text"
             placeholder="e.g. Mumbai Central Depot"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
+            aria-required="true"
           />
         </div>
         <div className="form-field">
-          <label>Status</label>
+          <label htmlFor="vehicle-status">Status</label>
           <select
+            id="vehicle-status"
             className="form-input"
             value={status}
             onChange={(e) => setStatus(e.target.value as Vehicle["status"])}
+            aria-required="true"
           >
             <option value="Available">Available</option>
             <option value="Loading">Loading</option>

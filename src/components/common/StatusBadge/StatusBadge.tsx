@@ -36,8 +36,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   ].join(" ");
 
   return (
-    <span className={classes}>
-      <span className="status-badge__dot"></span>
+    <span className={classes} role="status" aria-label={`Status: ${status}`}>
+      <span className="status-badge__dot" aria-hidden="true"></span>
       {status}
     </span>
   );

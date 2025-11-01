@@ -241,18 +241,24 @@ export const LoadManagement: React.FC = () => {
                   <div className="load-item__checkbox">
                     <input
                       type="checkbox"
+                      id={`load-item-${item.id}`}
                       checked={item.isLoaded}
                       onChange={() => toggleLoadItem(item.id)}
                       onClick={(e) => e.stopPropagation()}
+                      aria-label={`${item.productName} - ${item.quantity} ${item.unit} - ${item.crateCount} crates`}
                     />
                   </div>
-                  <div className="load-item__content">
+                  <label
+                    htmlFor={`load-item-${item.id}`}
+                    className="load-item__content"
+                  >
                     <div className="load-item__header">
                       <h4 className="load-item__name">{item.productName}</h4>
                       {item.isLoaded && (
                         <CheckCircle
                           size={20}
                           className="load-item__check-icon"
+                          aria-hidden="true"
                         />
                       )}
                     </div>
@@ -265,7 +271,7 @@ export const LoadManagement: React.FC = () => {
                         {item.crateCount} crates
                       </span>
                     </div>
-                  </div>
+                  </label>
                 </div>
               ))}
             </div>
