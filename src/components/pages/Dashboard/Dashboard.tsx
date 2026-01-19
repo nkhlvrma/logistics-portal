@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardHeader, CardBody, KPICard, Button } from "../../common";
 import { Truck, Package, AlertCircle, Wrench, MapPin } from "lucide-react";
@@ -12,40 +12,66 @@ export const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const { deliveries, vehicles, orders } = useLogistics();
 
-  const activeDeliveriesCount = deliveries.filter((d) =>
-    ["In Progress", "Scheduled", "Delayed"].includes(d.status),
-  ).length;
+  // Memoize expensive calculations
+  const activeDeliveriesCount = useMemo(
+    () =>
+      deliveries.filter((d) =>
+        ["In Progress", "Scheduled", "Delayed"].includes(d.status),
+      ).length,
+    [deliveries],
+  );
 
-  const delayedCount = deliveries.filter((d) => d.status === "Delayed").length;
+  const delayedCount = useMemo(
+    () => deliveries.filter((d) => d.status === "Delayed").length,
+    [deliveries],
+  );
 
-  const kpis = [
-    {
-      label: "Total Fleet",
-      value: vehicles.length,
-      unit: "vehicles",
-      trend: "up" as const,
-      change: 5,
-    },
-    {
-      label: "Available Now",
-      value: vehicles.filter((v) => v.status === "Available").length,
-      unit: "vehicles",
-      trend: "up" as const,
-      change: 12,
-    },
-    {
-      label: "Active Deliveries",
-      value: activeDeliveriesCount,
-      trend: "up" as const,
-      change: 8,
-    },
-    {
-      label: "Pending Orders",
-      value: orders.filter((o) => o.status === "Pending").length,
-      trend: "down" as const,
-      change: -15,
-    },
-  ];
+  const availableVehiclesCount = useMemo(
+    () => vehicles.filter((v) => v.status === "Available").length,
+    [vehicles],
+  );
+
+  const pendingOrdersCount = useMemo(
+    () => orders.filter((o) => o.status === "Pending").length,
+    [orders],
+  );
+
+  const kpis = useMemo(
+    () => [
+      {
+        label: "Total Fleet",
+        value: vehicles.length,
+        unit: "vehicles",
+        trend: "up" as const,
+        change: 5,
+      },
+      {
+        label: "Available Now",
+        value: availableVehiclesCount,
+        unit: "vehicles",
+        trend: "up" as const,
+        change: 12,
+      },
+      {
+        label: "Active Deliveries",
+        value: activeDeliveriesCount,
+        trend: "up" as const,
+        change: 8,
+      },
+      {
+        label: "Pending Orders",
+        value: pendingOrdersCount,
+        trend: "down" as const,
+        change: -15,
+      },
+    ],
+    [
+      vehicles.length,
+      availableVehiclesCount,
+      activeDeliveriesCount,
+      pendingOrdersCount,
+    ],
+  );
 
   return (
     <div className="dashboard">
