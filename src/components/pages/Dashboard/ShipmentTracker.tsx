@@ -7,10 +7,10 @@ import {
   Popup,
   Polyline,
 } from "react-leaflet";
-import { Icon, DivIcon } from "leaflet";
+import { DivIcon } from "leaflet";
 import { Card, CardHeader, CardBody, Button } from "../../common";
 import { useLogistics } from "../../../context/LogisticsContext";
-import { MapPin, Navigation, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import "./ShipmentTracker.css";
 import "leaflet/dist/leaflet.css";
 
@@ -46,12 +46,12 @@ export const ShipmentTracker: React.FC = () => {
 
   // Filter active vehicles (those with location data)
   const activeVehicles = vehicles.filter(
-    (v) => v.location && v.location.lat && v.location.lng
+    (v) => v.location && v.location.lat && v.location.lng,
   );
 
   // Get active deliveries for route lines
   const activeDeliveries = deliveries.filter((d) =>
-    ["In Progress", "Delayed"].includes(d.status)
+    ["In Progress", "Delayed"].includes(d.status),
   );
 
   // Center map on Mumbai region
@@ -59,7 +59,7 @@ export const ShipmentTracker: React.FC = () => {
 
   // Calculate stats
   const inTransitCount = vehicles.filter(
-    (v) => v.status === "In Transit"
+    (v) => v.status === "In Transit",
   ).length;
   const delayedCount = deliveries.filter((d) => d.status === "Delayed").length;
 

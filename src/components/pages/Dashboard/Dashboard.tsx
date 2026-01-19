@@ -1,14 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardHeader, CardBody, KPICard, Button } from "../../common";
-import {
-  Truck,
-  Package,
-  AlertCircle,
-  Clock,
-  Wrench,
-  MapPin,
-} from "lucide-react";
+import { Truck, Package, AlertCircle, Wrench, MapPin } from "lucide-react";
 import "./Dashboard.css";
 import { useLogistics } from "../../../context/LogisticsContext";
 import { FleetMetricsCard } from "./FleetMetricsCard";
@@ -20,7 +13,7 @@ export const Dashboard: React.FC = () => {
   const { deliveries, vehicles, orders } = useLogistics();
 
   const activeDeliveriesCount = deliveries.filter((d) =>
-    ["In Progress", "Scheduled", "Delayed"].includes(d.status)
+    ["In Progress", "Scheduled", "Delayed"].includes(d.status),
   ).length;
 
   const delayedCount = deliveries.filter((d) => d.status === "Delayed").length;
