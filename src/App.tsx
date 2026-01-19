@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { LogisticsProvider } from "./context/LogisticsContext";
-import "./App.css";
 
 // Lazy load page components for code-splitting
 const Dashboard = lazy(() =>
