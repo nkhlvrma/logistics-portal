@@ -1,0 +1,152 @@
+.fleet-metrics-card {
+  height: fit-content;
+  cursor: pointer;
+}
+
+.fleet-metrics-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.fleet-metrics-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Chart Container */
+.fleet-metrics-card__chart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fleet-metrics-card__chart-center {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.fleet-metrics-card__center-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.fleet-metrics-card__center-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Legend */
+.fleet-metrics-card__legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.fleet-metrics-card__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+}
+
+.fleet-metrics-card__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fleet-metrics-card__legend-label {
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.fleet-metrics-card__legend-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Metrics Row */
+.fleet-metrics-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.fleet-metrics-card__metric {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.fleet-metrics-card__metric-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fleet-metrics-card__metric-icon--green {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.fleet-metrics-card__metric-icon--blue {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.fleet-metrics-card__metric-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.fleet-metrics-card__metric-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.fleet-metrics-card__metric-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+/* Hover effect */
+.fleet-metrics-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .fleet-metrics-card__legend {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-metrics-card__metrics {
+    grid-template-columns: 1fr;
+  }
+}

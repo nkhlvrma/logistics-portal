@@ -1,9 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardHeader, CardBody, KPICard, Button } from "../../common";
-import { Truck, Package, AlertCircle, Clock } from "lucide-react";
+import {
+  Truck,
+  Package,
+  AlertCircle,
+  Clock,
+  Wrench,
+  MapPin,
+} from "lucide-react";
 import "./Dashboard.css";
 import { useLogistics } from "../../../context/LogisticsContext";
+import { FleetMetricsCard } from "./FleetMetricsCard";
+import { ShipmentTracker } from "./ShipmentTracker";
+import { DeliveryStatusCard } from "./DeliveryStatusCard";
 
 export const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -13,29 +23,34 @@ export const Dashboard: React.FC = () => {
     ["In Progress", "Scheduled", "Delayed"].includes(d.status)
   ).length;
 
+  const delayedCount = deliveries.filter((d) => d.status === "Delayed").length;
+
   const kpis = [
     {
       label: "Total Fleet",
       value: vehicles.length,
       unit: "vehicles",
+      trend: "up" as const,
+      change: 5,
     },
     {
       label: "Available Now",
       value: vehicles.filter((v) => v.status === "Available").length,
       unit: "vehicles",
+      trend: "up" as const,
+      change: 12,
     },
     {
       label: "Active Deliveries",
       value: activeDeliveriesCount,
+      trend: "up" as const,
+      change: 8,
     },
     {
       label: "Pending Orders",
       value: orders.filter((o) => o.status === "Pending").length,
-    },
-    {
-      label: "Under Maintenance",
-      value: vehicles.filter((v) => v.status === "Maintenance").length,
-      unit: "vehicles",
+      trend: "down" as const,
+      change: -15,
     },
   ];
 
@@ -87,101 +102,38 @@ export const Dashboard: React.FC = () => {
         ))}
       </div>
 
+      {/* Shipment Tracking Map - Full Width */}
+      <div className="dashboard__map-section">
+        <ShipmentTracker />
+      </div>
+
       {/* Main Content Grid */}
       <div className="dashboard__content-grid">
-        {/* Active Deliveries */}
-        <Card className="dashboard__card dashboard__card--large">
-          <CardHeader
-            title="Active Deliveries"
-            subtitle={`${activeDeliveriesCount} active deliveries`}
-            actions={
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/deliveries")}
-              >
-                View All
-              </Button>
-            }
-          />
-          <CardBody>
-            <div
-              className="delivery-list"
-              aria-live="polite"
-              aria-atomic="false"
-            >
-              {deliveries.map((delivery) => (
-                <div
-                  key={delivery.id}
-                  className="delivery-item"
-                  onClick={() => navigate("/deliveries")}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="delivery-item__header">
-                    <div className="delivery-item__info">
-                      <h4 className="delivery-item__title">
-                        {delivery.orderNumber}
-                      </h4>
-                      <p className="delivery-item__route">{delivery.route}</p>
-                    </div>
-                    <span
-                      className={`delivery-item__status delivery-item__status--${delivery.status
-                        .toLowerCase()
-                        .replace(/\s/g, "-")}`}
-                    >
-                      {delivery.status}
-                    </span>
-                  </div>
-                  <div className="delivery-item__details">
-                    <div className="delivery-item__detail">
-                      <Truck size={14} />
-                      <span>{delivery.vehicle.vehicleNumber}</span>
-                    </div>
-                    <div className="delivery-item__detail">
-                      <Clock size={14} />
-                      <span>
-                        ETA:{" "}
-                        {delivery.eta.toLocaleTimeString("en-IN", {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="delivery-item__progress">
-                    <div className="progress-bar">
-                      <div
-                        className="progress-bar__fill"
-                        style={{ width: `${delivery.progress}%` }}
-                      ></div>
-                    </div>
-                    <span className="delivery-item__progress-text">
-                      {delivery.progress}%
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardBody>
-        </Card>
+        {/* Fleet Performance */}
+        <FleetMetricsCard />
+
+        {/* Delivery Status */}
+        <DeliveryStatusCard />
 
         {/* Alerts & Notifications */}
         <Card className="dashboard__card">
           <CardHeader title="Recent Alerts" subtitle="Last 24 hours" />
           <CardBody>
             <div className="alert-list">
-              <div className="alert-item alert-item--warning">
-                <AlertCircle size={16} className="alert-item__icon" />
-                <div className="alert-item__content">
-                  <p className="alert-item__title">Delivery Delayed</p>
-                  <p className="alert-item__description">
-                    ORD-2025-005 - 2 hours behind schedule
-                  </p>
-                  <span className="alert-item__time">30 mins ago</span>
+              {delayedCount > 0 && (
+                <div className="alert-item alert-item--warning">
+                  <AlertCircle size={16} className="alert-item__icon" />
+                  <div className="alert-item__content">
+                    <p className="alert-item__title">Delivery Delayed</p>
+                    <p className="alert-item__description">
+                      ORD-2025-005 - 2 hours behind schedule
+                    </p>
+                    <span className="alert-item__time">30 mins ago</span>
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="alert-item alert-item--info">
-                <AlertCircle size={16} className="alert-item__icon" />
+                <Wrench size={16} className="alert-item__icon" />
                 <div className="alert-item__content">
                   <p className="alert-item__title">Vehicle Maintenance Due</p>
                   <p className="alert-item__description">
@@ -227,8 +179,15 @@ export const Dashboard: React.FC = () => {
                 className="quick-action-btn"
                 onClick={() => navigate("/deliveries")}
               >
-                <Clock className="quick-action-btn__icon" size={20} />
-                <span>Schedule Delivery</span>
+                <MapPin className="quick-action-btn__icon" size={20} />
+                <span>Track Shipments</span>
+              </button>
+              <button
+                className="quick-action-btn"
+                onClick={() => navigate("/fleet")}
+              >
+                <Wrench className="quick-action-btn__icon" size={20} />
+                <span>Fleet Status</span>
               </button>
             </div>
           </CardBody>

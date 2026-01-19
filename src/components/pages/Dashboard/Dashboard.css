@@ -24,24 +24,25 @@
 /* KPI Grid */
 .dashboard__kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
 }
 
-/* Main Content Grid */
+/* Map Section - Full Width */
+.dashboard__map-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Main Content Grid - 2x2 layout */
 .dashboard__content-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-lg);
 }
 
 .dashboard__card {
   height: fit-content;
-}
-
-.dashboard__card--large {
-  grid-column: span 1;
 }
 
 /* Delivery List */
@@ -228,8 +229,8 @@
 
 /* Quick Actions */
 .quick-actions {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-sm);
 }
 
@@ -245,14 +246,14 @@
   transition: all var(--transition-base);
   width: 100%;
   text-align: left;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   color: var(--text-primary);
 }
 
 .quick-action-btn:hover {
   background-color: var(--color-primary-light);
   border-color: var(--color-primary);
-  transform: translateX(4px);
+  transform: translateY(-2px);
 }
 
 .dark-mode .quick-action-btn:hover {
@@ -269,13 +270,19 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard__kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .dashboard__content-grid {
     grid-template-columns: 1fr;
   }
 
   .dashboard__kpi-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -299,16 +306,26 @@
     flex-wrap: wrap;
     gap: var(--spacing-sm);
   }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
   .dashboard__kpi-grid {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .dashboard__actions {
+    flex-direction: column;
   }
 
   .dashboard__actions button {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
   }
 
   .delivery-item__header {

@@ -1,0 +1,207 @@
+.shipment-tracker {
+  height: fit-content;
+}
+
+.shipment-tracker__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.shipment-tracker__alert-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  animation: pulse-alert 2s infinite;
+}
+
+@keyframes pulse-alert {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.shipment-tracker__body {
+  padding: 0 !important;
+}
+
+/* Map Container */
+.shipment-tracker__map-container {
+  position: relative;
+  height: 300px;
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.shipment-tracker__map {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Custom Vehicle Markers */
+.vehicle-marker {
+  background: transparent;
+  border: none;
+}
+
+.vehicle-marker__wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vehicle-marker__dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--marker-color);
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.vehicle-marker__pulse {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: var(--marker-color);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: marker-pulse 2s infinite;
+  z-index: 1;
+}
+
+@keyframes marker-pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Popup Styling */
+.vehicle-popup .leaflet-popup-content-wrapper {
+  border-radius: var(--border-radius-md);
+  padding: 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.vehicle-popup .leaflet-popup-content {
+  margin: 0;
+  width: 220px !important;
+}
+
+.vehicle-popup__content {
+  padding: var(--spacing-md);
+}
+
+.vehicle-popup__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.vehicle-popup__number {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+}
+
+.vehicle-popup__status {
+  font-size: var(--font-size-xs);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  color: white;
+  font-weight: 500;
+}
+
+.vehicle-popup__details {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.vehicle-popup__details p {
+  margin: 4px 0;
+}
+
+.vehicle-popup__details strong {
+  color: var(--text-primary);
+}
+
+/* Legend */
+.shipment-tracker__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.shipment-tracker__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.shipment-tracker__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shipment-tracker__map-container {
+    height: 250px;
+  }
+
+  .shipment-tracker__legend {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .shipment-tracker__map-container {
+    height: 200px;
+  }
+
+  .shipment-tracker__header-actions {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+}
+
+/* Dark mode adjustments */
+.dark-mode .shipment-tracker__map-container {
+  filter: brightness(0.9);
+}
+
+.dark-mode .vehicle-popup .leaflet-popup-content-wrapper {
+  background-color: var(--bg-primary);
+}
+
+.dark-mode .vehicle-popup .leaflet-popup-tip {
+  background-color: var(--bg-primary);
+}

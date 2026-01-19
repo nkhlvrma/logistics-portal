@@ -1,0 +1,168 @@
+.delivery-status-card {
+  height: fit-content;
+}
+
+.delivery-status-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Chart Section */
+.delivery-status-card__chart {
+  margin: 0 calc(-1 * var(--spacing-md));
+}
+
+/* On-Time Metric */
+.delivery-status-card__metric {
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-md);
+}
+
+.delivery-status-card__metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.delivery-status-card__metric-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.delivery-status-card__metric-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-success);
+}
+
+.delivery-status-card__progress-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.delivery-status-card__progress-bar {
+  flex: 1;
+  height: 8px;
+  background-color: var(--color-gray-200);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.delivery-status-card__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
+
+.delivery-status-card__progress-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 45px;
+  text-align: right;
+}
+
+/* Timeline Section */
+.delivery-status-card__timeline {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--spacing-md);
+}
+
+.delivery-status-card__timeline-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.delivery-status-card__events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.delivery-status-card__event {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.delivery-status-card__event:hover {
+  background-color: var(--bg-secondary);
+}
+
+.delivery-status-card__event-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-600);
+}
+
+.delivery-status-card__event--progress .delivery-status-card__event-icon {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.delivery-status-card__event--delayed .delivery-status-card__event-icon {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.delivery-status-card__event--completed .delivery-status-card__event-icon {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.delivery-status-card__event-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.delivery-status-card__event-message {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.delivery-status-card__event-time {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .delivery-status-card__metric-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .delivery-status-card__progress-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-xs);
+  }
+
+  .delivery-status-card__progress-value {
+    text-align: left;
+  }
+}
